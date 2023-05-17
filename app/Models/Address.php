@@ -10,7 +10,7 @@ class Address extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['line_one', 'line_two', 'city', 'state', 'postal_code'];
+    protected $fillable = ['customer_id','line_one', 'line_two', 'city', 'state', 'postal_code'];
 
     public function customer()
     {

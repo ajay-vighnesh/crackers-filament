@@ -10,6 +10,7 @@ class Gallery extends Model
     use HasFactory;
 
     protected $fillable = ['image'];
+    
 
     // protected $casts = ['slider_image' => 'array',];
 }
