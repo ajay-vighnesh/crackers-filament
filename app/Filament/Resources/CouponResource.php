@@ -19,6 +19,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class CouponResource extends Resource
 {
     protected static ?string $model = Coupon::class;
+    protected static ?string $recordTitleAttribute = 'coupon_code';
+
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
@@ -46,11 +48,11 @@ class CouponResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('coupon_code'),
-                Tables\Columns\TextColumn::make('discount_%'),
-                Tables\Columns\TextColumn::make('start_coupon') ,
-                Tables\Columns\TextColumn::make('expired_coupon') ,
-                // Tables\Columns\TextColumn::make('default_discount') ,
+                Tables\Columns\TextColumn::make('coupon_code')->toggleable(),
+                Tables\Columns\TextColumn::make('discount_%')->toggleable(),
+                Tables\Columns\TextColumn::make('start_coupon')->toggleable() ,
+                Tables\Columns\TextColumn::make('expired_coupon')->toggleable() ,
+                // Tables\Columns\TextColumn::make('default_discount')->toggleable() ,
             ])
             ->filters([
                 //

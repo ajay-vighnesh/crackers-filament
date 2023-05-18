@@ -19,6 +19,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class CustomerResource extends Resource
 {
     protected static ?string $model = Customer::class;
+    protected static ?string $recordTitleAttribute = 'name';
+
 
     protected static ?string $navigationIcon = 'heroicon-o-user-group';
 
@@ -42,10 +44,10 @@ class CustomerResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('email'),
-                Tables\Columns\TextColumn::make('mobile_number'),
-                TextColumn::make('name')->searchable(['name', 'mobile_number'])
+                Tables\Columns\TextColumn::make('name')->toggleable(),
+                Tables\Columns\TextColumn::make('email')->toggleable(),
+                Tables\Columns\TextColumn::make('mobile_number')->toggleable(),
+                TextColumn::make('name')->searchable(['name', 'mobile_number'])->toggleable()
             ])
             ->filters([
                 //

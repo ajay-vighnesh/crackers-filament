@@ -23,6 +23,7 @@ class OrderResource extends Resource
 {
     protected static ?string $model = Order::class;
 
+
     protected static ?string $navigationIcon = 'heroicon-o-shopping-bag';
 
     public static function form(Form $form): Form
@@ -81,12 +82,12 @@ class OrderResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('customer'),
-                Tables\Columns\TextColumn::make('date'),
-                Tables\Columns\TextColumn::make('total'),
-                Tables\Columns\TextColumn::make('shipping_address'),
-                Tables\Columns\TextColumn::make('orderstatus'),
-                TextColumn::make('customer')->searchable(['customer']),
+                Tables\Columns\TextColumn::make('customer')->toggleable(),
+                Tables\Columns\TextColumn::make('date')->toggleable(),
+                Tables\Columns\TextColumn::make('total')->toggleable(),
+                Tables\Columns\TextColumn::make('shipping_address')->toggleable(),
+                Tables\Columns\TextColumn::make('orderstatus')->toggleable(),
+                TextColumn::make('customer')->searchable(['customer'])->toggleable(),
             ])
             ->filters([
                 //

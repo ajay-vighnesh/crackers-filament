@@ -7,6 +7,8 @@ use App\Filament\Resources\CategoryResource\RelationManagers;
 use App\Models\Category;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms;
+use AlperenErsoy\FilamentExport\Actions\FilamentExportBulkAction;
+use AlperenErsoy\FilamentExport\Actions\FilamentExportHeaderAction;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -17,6 +19,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class CategoryResource extends Resource
 {
     protected static ?string $model = Category::class;
+    protected static ?string $recordTitleAttribute = 'category';
 
     protected static ?string $navigationIcon = 'heroicon-o-tag';
 
@@ -45,7 +48,23 @@ class CategoryResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
+                FilamentExportBulkAction::make('export')
+
             ]);
+    }
+
+    protected function getTableHeaderActions(): array
+    {
+        return [
+            FilamentExportHeaderAction::make('Export'),
+        ];
+    }
+    
+        protected function getTableBulkActions(): array
+    {
+        return [
+            FilamentExportBulkAction::make('Export'),
+        ];
     }
     
     public static function getRelations(): array

@@ -17,6 +17,7 @@ class AddressResource extends Resource
 {
     protected static ?string $model = Address::class;
 
+
     protected static ?string $pluralModelLabel = 'Address';
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
@@ -46,11 +47,11 @@ class AddressResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('line_one'),
-                Tables\Columns\TextColumn::make('line_two'),
-                Tables\Columns\TextColumn::make('city'),
-                Tables\Columns\TextColumn::make('state'),
-                Tables\Columns\TextColumn::make('postal_code'),
+                Tables\Columns\TextColumn::make('line_one')->toggleable(),
+                Tables\Columns\TextColumn::make('line_two')->toggleable(),
+                Tables\Columns\TextColumn::make('city')->toggleable(),
+                Tables\Columns\TextColumn::make('state')->toggleable(),
+                Tables\Columns\TextColumn::make('postal_code')->toggleable(),
             ])
             ->filters([
                 //
